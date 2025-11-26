@@ -30,10 +30,12 @@ type TourContext =
 const TourContext = createContext<TourContext>(undefined);
 
 export function TourProvider({
-  data,
+  data = {
+    tour: { step: "STEP_1", isOpen: true },
+  },
   children,
 }: {
-  data: { tour: Tour };
+  data?: { tour: Tour };
   children: ReactNode;
 }) {
   const [tour, setTour] = useLocalStorage<Tour | null>(STORAGE_KEY, null);
